@@ -117,7 +117,9 @@
 <span id="117">117</span>
 <span id="118">118</span>
 <span id="119">119</span>
+<span id="120">120</span>
 </pre><div class="example-wrap"><pre class="rust ">
+<span class="doccomment">/// This crate provide ways to unwrap Vec&lt;Result&lt;T, E&gt;&gt;. Read implematations for details</span>
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">error</span>::<span class="ident">Error</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Debug</span>;
 
@@ -129,9 +131,9 @@
     <span class="kw">fn</span> <span class="ident">foldr</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">T</span><span class="op">&gt;</span>, <span class="kw-2">&amp;</span><span class="ident">E</span><span class="op">&gt;</span>;
 }
 
-<span class="doccomment">/// Converts Vec&lt;Result&lt;T, E&gt;&gt; -&gt; Result&lt;Vec&lt;&amp;T&gt;, &amp;E&gt; stopping on first error</span>
+<span class="doccomment">/// Converts `Vec&lt;Result&lt;T, E&gt;&gt;` to `Result&lt;Vec&lt;&amp;T&gt;, &amp;E&gt;` stopping on first error</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// If no error is found Vec&lt;&amp;T&gt; foldr is equivalent of Ok(v.map(|x| x.unwrap()))</span>
+<span class="doccomment">/// If no error is found `Vec&lt;&amp;T&gt;` foldr is equivalent of Ok(v.map(|x| x.as_ref().unwrap()))</span>
 <span class="doccomment">/// If an error is found, the first error is returned and the vector is not walked further</span>
 <span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>, <span class="ident">E</span><span class="op">&gt;</span> <span class="ident">VecFoldResult</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">T</span>, <span class="ident">E</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">E</span><span class="op">&gt;</span><span class="op">&gt;</span>
 <span class="kw">where</span>
@@ -160,7 +162,7 @@
     <span class="kw">fn</span> <span class="ident">foldr_bisect</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">Vec</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">T</span><span class="op">&gt;</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">E</span><span class="op">&gt;</span>);
 }
 
-<span class="doccomment">/// Converts Vec&lt;Result&lt;T, E&gt;&gt; -&gt; (Vec&lt;&amp;T&gt;, Vec&lt;&amp;E&gt;)</span>
+<span class="doccomment">/// Converts `Vec&lt;Result&lt;T, E&gt;&gt;` to `(Vec&lt;&amp;T&gt;, Vec&lt;&amp;E&gt;)`</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// All Ok values are collected on left side of tuple</span>
 <span class="doccomment">/// All Err vaues are collected on right side of tuple</span>
