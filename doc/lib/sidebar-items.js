@@ -1,1 +1,1 @@
-initSidebarItems({"trait":[["VecFoldResultBisect",""]]});
+initSidebarItems({"trait":[["VecFoldResult",""],["VecFoldResultBisect",""]]});
