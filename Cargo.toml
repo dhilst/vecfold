@@ -3,6 +3,10 @@ name = "vecfold"
 version = "0.1.0"
 authors = ["Daniel Hilst Selli <danielhilst@gmail.com>"]
 edition = "2018"
+license-file = "LICENSE"
+description = "Fold methods for Vec<Result<T,E>>"
+
+
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
