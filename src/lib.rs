@@ -1,3 +1,4 @@
+/// This crate provide ways to unwrap Vec<Result<T, E>>. Read implematations for details
 use std::error::Error;
 use std::fmt::Debug;
 
@@ -9,9 +10,9 @@ where
     fn foldr(&self) -> Result<Vec<&T>, &E>;
 }
 
-/// Converts Vec<Result<T, E>> -> Result<Vec<&T>, &E> stopping on first error
+/// Converts `Vec<Result<T, E>>` to `Result<Vec<&T>, &E>` stopping on first error
 ///
-/// If no error is found Vec<&T> foldr is equivalent of Ok(v.map(|x| x.unwrap()))
+/// If no error is found `Vec<&T>` foldr is equivalent of Ok(v.map(|x| x.as_ref().unwrap()))
 /// If an error is found, the first error is returned and the vector is not walked further
 impl<'a, T, E> VecFoldResult<'a, T, E> for Vec<Result<T, E>>
 where
@@ -40,7 +41,7 @@ where
     fn foldr_bisect(&self) -> (Vec<&T>, Vec<&E>);
 }
 
-/// Converts Vec<Result<T, E>> -> (Vec<&T>, Vec<&E>)
+/// Converts `Vec<Result<T, E>>` to `(Vec<&T>, Vec<&E>)`
 ///
 /// All Ok values are collected on left side of tuple
 /// All Err vaues are collected on right side of tuple
