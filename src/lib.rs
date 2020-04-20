@@ -12,7 +12,7 @@ where
 
 /// Converts `Vec<Result<T, E>>` to `Result<Vec<&T>, &E>` stopping on first error
 ///
-/// If no error is found `Vec<&T>` foldr is equivalent of Ok(v.map(|x| x.as_ref().unwrap()))
+/// If no error is found `Vec<&T>` foldr is equivalent of `Ok(v.map(|x| x.as_ref().unwrap()))`
 /// If an error is found, the first error is returned and the vector is not walked further
 impl<'a, T, E> VecFoldResult<'a, T, E> for Vec<Result<T, E>>
 where
