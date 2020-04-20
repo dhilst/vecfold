@@ -15,7 +15,7 @@ assert!(invalid.foldr().is_err());
 ```
 
 If you need to collect all errors you can use `.foldr_bisect`. It converts
-`Vec<Result<T, E>>`, ti `(Vec<&T>, Vec<&E>)`.
+`Vec<Result<T, E>>`, to `(Vec<&T>, Vec<&E>)`.
 
 ```rust
 // happy path, no errors, return empty error vector
